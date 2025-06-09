@@ -37,6 +37,6 @@ The program lets you select an image file via a GUI file picker, sends the image
 <br>├── requirements.txt - <b>Python dependencies</b>
 <br>└── README.md - <b>This README file</b>
 
-3. Run -  python gender_detection_upload.py
+3. Run -  <b><u>python gender_detection_upload.py</u></b>
 
 
