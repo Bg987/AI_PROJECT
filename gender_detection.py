@@ -14,14 +14,14 @@ API_URL =os.getenv('API_URL')
 def choose_image():
     Tk().withdraw()  # Hide main Tkinter window
     file_path = filedialog.askopenfilename(
-        filetypes=[("Image files", "*.jpg *.jpeg *.png *.jfif")],
+        filetypes=[("Image files", "*.jpg *.jpeg *.png *.jfif")],#allowed extension
         title="Choose an image"
     )
     return file_path
 
 def detect_gender(image_path):
     with open(image_path, 'rb') as f:
-        img_data = base64.b64encode(f.read()).decode()
+        img_data = base64.b64encode(f.read()).decode()# convert image to base64
 
     data = {
         'api_key': API_KEY,
@@ -30,14 +30,14 @@ def detect_gender(image_path):
         'return_attributes': 'gender'
     }
 
-    response = requests.post(API_URL, data=data)
+    response = requests.post(API_URL, data=data)# send request 
     if response.status_code != 200:
         print("API error:", response.status_code, response.text)
         return []
 
     return response.json().get("faces", [])
 
-def draw_results(image_path, faces):
+def draw_results(image_path, faces):#
     img = cv2.imread(image_path)
     for face in faces:
         attrs = face['attributes']
@@ -55,19 +55,19 @@ def draw_results(image_path, faces):
 
 def main():
     print("loading...")
-    image_path = choose_image()
+    image_path = choose_image()# open file dialog to choose image
     if image_path:
         print("Selected image:", image_path)
         print("loading..")
-        faces = detect_gender(image_path)
+        faces = detect_gender(image_path)#main logic:-> faces : api response
         if faces:
             print(f"Detected {len(faces)} face(s).")
-            for face in faces:
+            for face in faces:#print results
                 attrs = face['attributes']
                 gender = attrs['gender'].get('value', 'Unknown')
                 print("gender: ",gender)
 
-            draw_results(image_path, faces)
+            draw_results(image_path, faces)#show gender detection results
         else:
             print("No faces detected.")
     else:
