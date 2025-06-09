@@ -31,11 +31,11 @@ The program lets you select an image file via a GUI file picker, sends the image
 1. Clone this repository or download the code files.
 2. file structure.
    .
-<br>├── gender_detection_upload.py    # Main Python script
-<br>├── .env                         # Environment variables file (API keys)
-<br>├── .gitignore                   # Git ignore file (includes .env)
-<br>├── requirements.txt             # Python dependencies
-<br>└── README.md                    # This README file
+<br>├── gender_detection_upload.py    ## Main Python script
+<br>├── .env                         ## Environment variables file (API keys)
+<br>├── .gitignore                   ## Git ignore file (includes .env)
+<br>├── requirements.txt             ## Python dependencies
+<br>└── README.md                    ## This README file
 
 3. Run -  python gender_detection_upload.py
 
